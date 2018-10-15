@@ -1,14 +1,15 @@
 
 
+
 <div *ngFor="let currency of currencies">
 
   <div class="input-group">
     <div class="input-group-prepend input-heading">
       <span class="input-group-text">{{currency.sign}}</span>
     </div>
-    <input id="currency.name" type="text" v-model='currency.value' class="form-control" aria-label="Amount (to the nearest dollar)">
+    <input id="currency.name" #cur type="text" [(value)]="currency.value" class="form-control" aria-label="Amount (to the nearest dollar)">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" v-on:click="$emit('compute-values', currency.value, currency.name)">Go</button>
+      <button class="btn btn-outline-secondary" type="button" (click)="onClick(cur.value, currency.name)">Go</button>
     </div>
   </div>
 

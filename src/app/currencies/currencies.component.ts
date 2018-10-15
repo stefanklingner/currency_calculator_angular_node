@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-currencies',
   templateUrl: './currencies.component.html',
   styleUrls: ['./currencies.component.css']
 })
 export class CurrenciesComponent implements OnInit {
-
-  heroes = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
 
   currencies = [
     { name: 'eur', sign: '€', value: '' },
@@ -19,9 +16,11 @@ export class CurrenciesComponent implements OnInit {
     { name: 'iota', sign: 'Iota', value: '' }
   ];
 
-    name : string = "stefan";
-
   constructor() { }
+
+  onClick(value : number, name : string) : void {
+    console.log("clicked " + value + " " + name);
+  }
 
   ngOnInit() {
 
