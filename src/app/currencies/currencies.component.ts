@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
+import { CurrenciesService } from './currencies.service';
 
 @Component({
   selector: 'app-currencies',
@@ -16,15 +17,23 @@ export class CurrenciesComponent implements OnInit {
     { name: 'iota', sign: 'Iota', value: '' }
   ];
 
-  constructor() { }
+  @Injectable()
+  constructor(private currenciesServce: CurrenciesService) { }
 
-  onClick(value : number, name : string) : void {
-    console.log("clicked " + value + " " + name);
+  onClick(value: number, name: string): void {
+   
+    this.currenciesServce.getCurrencies()
+      .subscribe((data: Config) => this.config = {
+          heroesUrl: data['heroesUrl'],
+          textfile:  data['textfile']
+      });
+
+    console.log('clicked ' + value + ' ' + name);
   }
 
   ngOnInit() {
 
-    console.log(" initializing currencies component");
+    console.log(' initializing currencies component');
 
   }
 
