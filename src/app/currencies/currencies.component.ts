@@ -1,14 +1,16 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { CurrenciesService } from './currencies.service';
+import {ICurrencies} from './currencies.interface';
 
 @Component({
   selector: 'app-currencies',
   templateUrl: './currencies.component.html',
   styleUrls: ['./currencies.component.css']
 })
+// @Injectable()
 export class CurrenciesComponent implements OnInit {
 
-  currencies = [
+  currencies: ICurrencies = [
     { name: 'eur', sign: '€', value: '' },
     { name: 'usd', sign: '$', value: '' },
     { name: 'btc', sign: 'Btc', value: '' },
@@ -17,18 +19,15 @@ export class CurrenciesComponent implements OnInit {
     { name: 'iota', sign: 'Iota', value: '' }
   ];
 
-  @Injectable()
-  constructor(private currenciesServce: CurrenciesService) { }
+  constructor(private currenciesService: CurrenciesService) { }
 
   onClick(value: number, name: string): void {
-   
-    this.currenciesServce.getCurrencies()
-      .subscribe((data: Config) => this.config = {
-          heroesUrl: data['heroesUrl'],
-          textfile:  data['textfile']
-      });
 
-    console.log('clicked ' + value + ' ' + name);
+    this.currencies = this.currenciesService.getCurrencies();
+    // this.currenciesService.getCurrencies()
+    //   .subscribe((data: Currencies) => this.currencies = data);
+
+      console.log('clicked ' + value + ' ' + name);
   }
 
   ngOnInit() {

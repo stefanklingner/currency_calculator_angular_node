@@ -8,11 +8,11 @@ import { CurrenciesComponent } from './currencies/currencies.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HttpClientModule,
     CurrenciesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
