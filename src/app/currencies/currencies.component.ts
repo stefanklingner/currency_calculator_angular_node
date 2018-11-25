@@ -7,7 +7,6 @@ import {ICurrencies} from './currencies.interface';
   templateUrl: './currencies.component.html',
   styleUrls: ['./currencies.component.css']
 })
-// @Injectable()
 export class CurrenciesComponent implements OnInit {
 
   currencies: ICurrencies = [
