@@ -22,11 +22,10 @@ export class CurrenciesComponent implements OnInit {
 
   onClick(value: number, name: string): void {
 
-    this.currencies = this.currenciesService.getCurrencies();
-    // this.currenciesService.getCurrencies()
-    //   .subscribe((data: Currencies) => this.currencies = data);
+    this.currenciesService.getCurrencies().subscribe(c => this.currencies = c);
 
-      console.log('clicked ' + value + ' ' + name);
+    console.log('clicked ' + this.currencies[1].name);
+//    console.log('clicked ' + value + ' ' + name);
   }
 
   ngOnInit() {
