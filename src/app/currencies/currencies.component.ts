@@ -9,6 +9,8 @@ import {ICurrencies} from './currencies.interface';
 })
 export class CurrenciesComponent implements OnInit {
 
+  errorMessage: string;
+
   currencies: ICurrencies = [
     { name: 'eur', sign: '€', value: '' },
     { name: 'usd', sign: '$', value: '' },
@@ -22,7 +24,9 @@ export class CurrenciesComponent implements OnInit {
 
   onClick(value: number, name: string): void {
 
-    this.currenciesService.getCurrencies().subscribe(c => this.currencies = c);
+    this.currenciesService.getCurrencies().subscribe(
+      c => this.currencies = c,
+      error => this.errorMessage = <any>error);
 
     console.log('clicked ' + this.currencies[1].name);
 //    console.log('clicked ' + value + ' ' + name);
