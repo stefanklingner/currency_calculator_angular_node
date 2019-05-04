@@ -23,7 +23,8 @@ export class CurrenciesService {
         //     { "name": "iota", "sign": "Iota", "value": "6" }
         //   ];
 
-        return this.http.get<ICurrencies>(this.currenciesUrl).pipe(
+        return this.http.get<ICurrencies>(this.currenciesUrl)
+          .pipe(
             tap(data => console.log('All: ' + JSON.stringify(data))),
             catchError(this.handleError)
         );
